@@ -31,6 +31,9 @@
     <footer class="page-foot">
       <span>数据保存在本机浏览器里，换浏览器或清缓存会回到示例数据</span>
     </footer>
+    <p class="page-desc" style="margin-top: 8px">
+      说明：「地表沉降」的待处理/异常与「建筑监测」的报警均由同一份沉降测点记录派生，概览、沉降页、建筑监测页不重复计算。
+    </p>
   </section>
 </template>
 

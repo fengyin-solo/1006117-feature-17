@@ -1,4 +1,13 @@
 import type { EntryRow } from './types'
+import {
+  BUILDING_SEED,
+  SCHEMA_VERSION,
+  SEED_BATCHES,
+  SEED_READINGS,
+  SETTLEMENT_SEED,
+} from './settlement-seed'
+
+export { SCHEMA_VERSION, SEED_READINGS, SEED_BATCHES }
 
 // 示例数据：首次打开时播种，之后浏览器里的改动优先，重置才会回到这份。
 export const SEED_ROWS: Record<string, EntryRow[]> = {
@@ -222,50 +231,7 @@ export const SEED_ROWS: Record<string, EntryRow[]> = {
       "运输状态": "渣土外运样例3"
     }
   ],
-  "settlement": [
-    {
-      "id": 1,
-      "status": "正常",
-      "pending": true,
-      "abnormal": false,
-      "测点编号": "SETT-0001",
-      "测点位置": "地表沉降样例1",
-      "初始高程": "地表沉降样例1",
-      "累计沉降": "地表沉降样例1",
-      "沉降速率": "地表沉降样例1",
-      "预警阈值": "地表沉降样例1",
-      "监测日期": "2026-09-01",
-      "测点状态": "地表沉降样例1"
-    },
-    {
-      "id": 2,
-      "status": "预警",
-      "pending": true,
-      "abnormal": true,
-      "测点编号": "SETT-0002",
-      "测点位置": "地表沉降样例2",
-      "初始高程": "地表沉降样例2",
-      "累计沉降": "地表沉降样例2",
-      "沉降速率": "地表沉降样例2",
-      "预警阈值": "地表沉降样例2",
-      "监测日期": "2026-09-02",
-      "测点状态": "地表沉降样例2"
-    },
-    {
-      "id": 3,
-      "status": "报警",
-      "pending": false,
-      "abnormal": false,
-      "测点编号": "SETT-0003",
-      "测点位置": "地表沉降样例3",
-      "初始高程": "地表沉降样例3",
-      "累计沉降": "地表沉降样例3",
-      "沉降速率": "地表沉降样例3",
-      "预警阈值": "地表沉降样例3",
-      "监测日期": "2026-09-03",
-      "测点状态": "地表沉降样例3"
-    }
-  ],
+  "settlement": SETTLEMENT_SEED,
   "axis": [
     {
       "id": 1,
@@ -486,50 +452,7 @@ export const SEED_ROWS: Record<string, EntryRow[]> = {
       "运行状态": "洞内通风样例3"
     }
   ],
-  "building": [
-    {
-      "id": 1,
-      "status": "待布点",
-      "pending": true,
-      "abnormal": false,
-      "对象编号": "BUIL-0001",
-      "建筑物名称": "建筑监测样例1",
-      "结构类型": "建筑监测样例1",
-      "距隧道距离": "建筑监测样例1",
-      "允许沉降": "建筑监测样例1",
-      "实测沉降": "建筑监测样例1",
-      "监测频次": "建筑监测样例1",
-      "监测状态": "建筑监测样例1"
-    },
-    {
-      "id": 2,
-      "status": "监测中",
-      "pending": true,
-      "abnormal": true,
-      "对象编号": "BUIL-0002",
-      "建筑物名称": "建筑监测样例2",
-      "结构类型": "建筑监测样例2",
-      "距隧道距离": "建筑监测样例2",
-      "允许沉降": "建筑监测样例2",
-      "实测沉降": "建筑监测样例2",
-      "监测频次": "建筑监测样例2",
-      "监测状态": "建筑监测样例2"
-    },
-    {
-      "id": 3,
-      "status": "已报警",
-      "pending": false,
-      "abnormal": false,
-      "对象编号": "BUIL-0003",
-      "建筑物名称": "建筑监测样例3",
-      "结构类型": "建筑监测样例3",
-      "距隧道距离": "建筑监测样例3",
-      "允许沉降": "建筑监测样例3",
-      "实测沉降": "建筑监测样例3",
-      "监测频次": "建筑监测样例3",
-      "监测状态": "建筑监测样例3"
-    }
-  ],
+  "building": BUILDING_SEED,
   "utility": [
     {
       "id": 1,

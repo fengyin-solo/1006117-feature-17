@@ -1,6 +1,9 @@
 import { MODULE_BY_KEY } from '@/data/modules'
-import { allRows, listRows, resetRows, saveRows } from '@/data/local-store'
+import { allRows, listRows, resetRows, resetSettlementStores, saveRows } from '@/data/local-store'
 import type { ActionResult, EntryRow, ModuleMeta, OverviewResult, PageResult } from '@/data/types'
+
+// 沉降监测的排期取数、重试、补测、报警联动都在领域服务里，页面统一从本文件引用。
+export * from './settlement-service'
 
 // 会写进数据的「往回走」动作：命中就把这条记录标成异常态，看板上能一眼看出来。
 const NEGATIVE_ACTIONS = ['撤销', '作废', '拒绝', '驳回', '停用', '忽略', '下线', '回滚']
@@ -57,7 +60,12 @@ export function runAction(key: string, id: number, action: string): ActionResult
 }
 
 export function resetModule(key: string): PageResult {
-  resetRows(key)
+  if (key === 'settlement') {
+    // 沉降台账、建筑对象、监测读数、补测批次同生同灭，避免重置后留下对不上的读数。
+    resetSettlementStores()
+  } else {
+    resetRows(key)
+  }
   return listEntries(key)
 }
 

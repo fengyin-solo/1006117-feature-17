@@ -35,3 +35,56 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .error-text { color: #b42318; }
 .status-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .legend-item { background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+.legend-item.legend-warn { background: #fef3c7; color: #92400e; }
+.legend-item.legend-alarm { background: #fee2e2; color: #b42318; }
+
+/* 沉降监测扩展 */
+.stat-value.alarm { color: #b42318; }
+.stat-value.warn { color: #b45309; }
+.tag-alarm { color: #b42318; font-weight: 600; }
+.tag-warn { color: #b45309; font-weight: 600; }
+.tag-ok { color: #15803d; }
+.tag-off { color: var(--muted); }
+.row-abnormal { background: #fef2f2; }
+.cell-reason { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.cell-actions { white-space: nowrap; }
+.ok-text { color: #15803d; }
+.foot-msg { margin-left: 12px; }
+
+.zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.zone-card { background: #fff; border: 1px solid var(--border); border-left-width: 4px; border-radius: 8px; padding: 10px 12px; }
+.zone-card.zone-ok { border-left-color: #16a34a; }
+.zone-card.zone-idle { border-left-color: #94a3b8; }
+.zone-card.zone-fail { border-left-color: #dc2626; background: #fef2f2; }
+.zone-card.zone-warn { border-left-color: #d97706; background: #fffbeb; }
+.zone-card.zone-empty { border-left-color: #cbd5e1; }
+.zone-head { display: flex; justify-content: space-between; align-items: center; }
+.zone-state { font-size: 12px; background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+.zone-reason { font-size: 12px; color: #334155; margin: 6px 0; min-height: 32px; }
+.zone-counts { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
+
+.batch-panel { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
+.batch-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; font-size: 13px; }
+.batch-note { color: var(--muted); font-size: 12px; }
+.batch-start { margin-top: 8px; }
+.progress-track { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.progress-dot { font-size: 11px; border-radius: 4px; padding: 2px 6px; background: #e2e8f0; color: #475569; }
+.progress-dot.ok { background: #dcfce7; color: #166534; }
+.progress-dot.fail { background: #fee2e2; color: #991b1b; }
+
+.reading-panel { margin-top: 16px; }
+
+.modal-mask { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); display: flex; align-items: center; justify-content: center; z-index: 50; }
+.modal { background: #fff; border-radius: 10px; padding: 18px 20px; width: min(720px, 92vw); max-height: 88vh; overflow: auto; }
+.modal h3 { margin: 0 0 12px; font-size: 15px; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; }
+.form-grid.single { grid-template-columns: 1fr; }
+.form-item span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+.form-item input { width: 100%; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; }
+.form-item input:disabled { background: #f1f5f9; color: var(--muted); }
+.form-hint { font-size: 12px; color: var(--muted); margin: 8px 0; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+
+.role-select { border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; font-size: 12px; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
