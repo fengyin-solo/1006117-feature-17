@@ -1,5 +1,6 @@
 import { MODULE_BY_KEY } from '@/data/modules'
 import { allRows, listRows, resetRows, saveRows } from '@/data/local-store'
+import { getMonitoringSummary } from '@/api/monitor-service'
 import type { ActionResult, EntryRow, ModuleMeta, OverviewResult, PageResult } from '@/data/types'
 
 // 会写进数据的「往回走」动作：命中就把这条记录标成异常态，看板上能一眼看出来。
@@ -86,8 +87,28 @@ export function downloadEntries(key: string): void {
 
 export function loadOverview(): OverviewResult {
   const rows = allRows()
+  // 地表沉降 / 建筑监测两行的待处理、异常量与沉降页、建筑页同源：
+  // 统一取监测域的同源汇总，概览不再自己再算一遍报警数。
+  const summary = getMonitoringSummary()
   const modules = [...MODULE_BY_KEY.values()].map((meta) => {
     const entries = rows[meta.key] ?? []
+    if (meta.key === 'settlement') {
+      // 待处理 = 到点未测（待补测）；异常量 = 取数异常 + 报警测点，同源。
+      return {
+        name: meta.name,
+        created: entries.length,
+        pending: summary.dueCount,
+        abnormal: summary.fetchErrorCount + summary.alarmPointCount,
+      }
+    }
+    if (meta.key === 'building') {
+      return {
+        name: meta.name,
+        created: entries.length,
+        pending: entries.filter((row) => String(row.status) === '待布点').length,
+        abnormal: summary.alarmObjectCount,
+      }
+    }
     return {
       name: meta.name,
       created: entries.length,
